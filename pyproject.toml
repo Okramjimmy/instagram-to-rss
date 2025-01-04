@@ -1,0 +1,19 @@
+[project]
+name = "rss-feed-project"
+version = "0.1.0"
+description = """
+A Python-based tool to fetch the latest posts from public Instagram profiles and generate an RSS feed. 
+It automates the extraction of Instagram posts, including captions, images, and links, and converts them 
+into a structured RSS format. Features include media embedding, profile clean-up, and customization options.
+"""
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.6",
+    "feedgenerator>=2.1.0",
+    "google-api-python-client>=2.157.0",
+    "instaloader>=4.14",
+    "pillow>=11.1.0",
+    "requests>=2.32.3",
+    "uvicorn>=0.34.0",
+]
