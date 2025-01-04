@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 import instaloader
 import shutil
-
+from fastapi.responses import HTMLResponse
 # Initialize FastAPI app
 app = FastAPI()
 
@@ -85,6 +85,22 @@ def get_instagram_rss(profile_name: str, limit: int = 5, output_dir: str = "."):
     except Exception as e:
         logging.exception(f"Failed to generate Instagram feed: {e}")
         raise HTTPException(status_code=500, detail=f"Error generating Instagram feed: {e}")
+
+# Root route
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return """
+    <html>
+        <head>
+            <title>Welcome to Instagram to RSS Feed</title>
+        </head>
+        <body>
+            <h1>Welcome to the Instagram to RSS Feed Generator!</h1>
+            <p>To get started, please visit the <a href="/docs">API Documentation</a>.</p>
+        </body>
+    </html>
+    """
+
 
 @app.get("/generate_rss")
 async def generate_instagram_rss(profile_name: str, limit: int = 5):
