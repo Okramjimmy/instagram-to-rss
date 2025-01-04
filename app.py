@@ -20,6 +20,9 @@ def get_instagram_rss(profile_name: str, limit: int = 5):
     try:
         # Initialize Instaloader
         L = instaloader.Instaloader()
+        # Set custom user-agent and session settings
+        L.context.user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+        
 
         # Set up options for Instaloader
         L.download_metadata = False  # Don't download metadata JSON files
